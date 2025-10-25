@@ -1,7 +1,9 @@
 #define DEFAULT 0
-#define SYS     1
+#define MOUSE   1
 #define FUNC    2
 #define MISC    3
+#define SCROLL  5
+#define SNIPE   6
 
 #include <behaviors/mouse_keys.dtsi>
 #include <dt-bindings/zmk/mouse.h>
@@ -165,27 +167,27 @@
 &td_q      &td_w         &td_f     &td_p         &td_g                                    &td_j            &td_l  &td_u      &td_y    &td_semi
 &kp A      &kp R         &kp S     &kp T         &kp D                                    &kp H            &kp N  &kp E      &kp I    &kp O
 &kp Z      &kp X         &kp C     &kp V         &kp B                                    &kp K            &kp M  &kp COMMA  &kp DOT  &kp SQT
-&ht_ctrl LCTRL SYS  &kp LGUI  &td_lshift  &none  &none  &none &td_rshift &lt SYS SPACE &td_enter   &kp LBKT  &kp RBKT  &kp BSLH
+&ht_ctrl LCTRL MOUSE  &kp LGUI  &td_lshift  &td_rshift  &lt MOUSE SPACE  &td_enter  &kp LBKT  &kp RBKT  &kp BSLH
             >;
         };
 
-        sys_layer {
-            label = "SYS";
+        mouse_layer {
+            label = "MOUSE";
             bindings = <
-&kp F1  &kp F2   &kp F3   &kp F4   &kp F5                       &kp F6    &kp F7    &kp F8   &kp F9   &kp F10
-&trans  &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans                &kp HOME  &kp UP    &kp END  &none    &kp PG_DN
-&tog FUNC  &trans  &trans   &trans   &trans                     &kp LEFT  &kp DOWN  &kp RIGHT  &none  &kp PG_UP
-&kp ESC  &kp BSPC  &kp DEL  &trans  &trans  &trans  &trans  &trans                             &trans  &trans
+&kp F1  &kp F2   &kp F3   &kp F4   &kp F5                       &kp F6    &kp F7    &kp F8     &kp F9     &kp F10
+&trans  &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans                &kp HOME  &kp UP    &kp END    &kp PG_DN  &trans
+&tog FUNC  &trans  &trans   &trans   &trans                     &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_UP  &trans
+&kp ESC  &kp BSPC  &kp DEL  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         func_layer {
             label = "FUNC";
             bindings = <
-&kp F1  &kp F2   &kp F3   &kp F4   &kp F5                       &kp C_VOL_UP  &kp C_BRI_UP  &none  &none  &none
-&kp F6  &kp F7   &kp F8   &kp F9   &kp F10                      &kp C_VOL_DN  &kp C_BRI_DN  &none  &none  &none
-&trans  &trans   &trans   &kp F11  &kp F12                      &kp C_PREV  &kp C_PP  &kp C_NEXT  &none  &none
-&kp ESC  &trans  &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &kp C_MUTE
+&kp F1  &kp F2   &kp F3   &kp F4   &kp F5                       &kp C_VOL_UP  &kp C_BRI_UP  &trans  &trans  &trans
+&kp F6  &kp F7   &kp F8   &kp F9   &kp F10                      &kp C_VOL_DN  &kp C_BRI_DN  &trans  &trans  &trans
+&trans  &trans   &trans   &kp F11  &kp F12                      &kp C_PREV  &kp C_PP  &kp C_NEXT  &trans  &trans
+&kp ESC  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp C_MUTE
             >;
         };
 
@@ -195,7 +197,27 @@
 &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        scroll_layer {
+            label = "SCROLL";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        snipe_layer {
+            label = "SNIPE";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
