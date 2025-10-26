@@ -15,15 +15,15 @@
 &nice_view_spi { cs-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>; };
 
 &lt {
-    tapping-term-ms = <240>;
+    tapping-term-ms = <200>;
     flavor = "balanced";
-    quick-tap-ms = <120>;
+    quick-tap-ms = <150>;
 };
 
 &mt {
-    tapping-term-ms = <120>;
+    tapping-term-ms = <200>;
     flavor = "tap-preferred";
-    quick-tap-ms = <120>;
+    quick-tap-ms = <150>;
 };
 
 &caps_word { continue-list = <UNDERSCORE MINUS>; };
@@ -37,7 +37,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_LSHIFT";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&kp LALT>, <&kp K_APP>;
         };
 
@@ -45,7 +45,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_RSHIFT";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp RSHFT>, <&kp RALT>, <&kp K_APP>;
         };
 
@@ -54,7 +54,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_GUI";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp LGUI>, <&mo SYS>, <&mo FUNC>;
         };
 
@@ -63,8 +63,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAP_CTRL";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <120>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
@@ -74,8 +74,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_SPACE";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <120>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&mo>, <&kp>;
         };
@@ -85,8 +85,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_ENTER";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <120>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&mo>, <&kp>;
         };
@@ -96,7 +96,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_1";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N1>, <&kp EXCL>, <&none>;
         };
 
@@ -104,7 +104,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_2";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N2>, <&kp AT>, <&none>;
         };
 
@@ -112,7 +112,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_3";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N3>, <&kp HASH>, <&none>;
         };
 
@@ -120,7 +120,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_4";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N4>, <&kp DLLR>, <&none>;
         };
 
@@ -128,7 +128,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_5";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N5>, <&kp PRCNT>, <&none>;
         };
 
@@ -136,7 +136,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_6";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N6>, <&kp CARET>, <&none>;
         };
 
@@ -144,7 +144,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_7";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N7>, <&kp AMPS>, <&none>;
         };
 
@@ -152,7 +152,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_8";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N8>, <&kp STAR>, <&none>;
         };
 
@@ -160,7 +160,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_9";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N9>, <&kp LPAR>, <&none>;
         };
 
@@ -168,7 +168,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp N0>, <&kp RPAR>, <&none>;
         };
 
@@ -177,7 +177,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_GRAVE";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp GRAVE>, <&kp TILDE>, <&none>;
         };
 
@@ -185,7 +185,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_EQUAL";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp EQUAL>, <&kp PLUS>, <&none>;
         };
 
@@ -193,7 +193,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_MINUS";
             #binding-cells = <0>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <200>;
             bindings = <&kp MINUS>, <&kp UNDER>, <&none>;
         };
     };
