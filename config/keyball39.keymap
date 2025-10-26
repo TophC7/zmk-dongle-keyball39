@@ -97,7 +97,7 @@
             label = "TAP_DANCE_1";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N1>, <&kp EXCL>, <&none>;
+            bindings = <&kp N1>, <&kp EXCL>;
         };
 
         td_2: tap_dance_2 {
@@ -105,7 +105,7 @@
             label = "TAP_DANCE_2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N2>, <&kp AT>, <&none>;
+            bindings = <&kp N2>, <&kp AT>;
         };
 
         td_3: tap_dance_3 {
@@ -113,7 +113,7 @@
             label = "TAP_DANCE_3";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N3>, <&kp HASH>, <&none>;
+            bindings = <&kp N3>, <&kp HASH>;
         };
 
         td_4: tap_dance_4 {
@@ -121,7 +121,7 @@
             label = "TAP_DANCE_4";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N4>, <&kp DLLR>, <&none>;
+            bindings = <&kp N4>, <&kp DLLR>;
         };
 
         td_5: tap_dance_5 {
@@ -129,7 +129,7 @@
             label = "TAP_DANCE_5";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N5>, <&kp PRCNT>, <&none>;
+            bindings = <&kp N5>, <&kp PRCNT>;
         };
 
         td_6: tap_dance_6 {
@@ -137,7 +137,7 @@
             label = "TAP_DANCE_6";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N6>, <&kp CARET>, <&none>;
+            bindings = <&kp N6>, <&kp CARET>;
         };
 
         td_7: tap_dance_7 {
@@ -145,7 +145,7 @@
             label = "TAP_DANCE_7";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N7>, <&kp AMPS>, <&none>;
+            bindings = <&kp N7>, <&kp AMPS>;
         };
 
         td_8: tap_dance_8 {
@@ -153,7 +153,7 @@
             label = "TAP_DANCE_8";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N8>, <&kp STAR>, <&none>;
+            bindings = <&kp N8>, <&kp STAR>;
         };
 
         td_9: tap_dance_9 {
@@ -161,7 +161,7 @@
             label = "TAP_DANCE_9";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N9>, <&kp LPAR>, <&none>;
+            bindings = <&kp N9>, <&kp LPAR>;
         };
 
         td_0: tap_dance_0 {
@@ -169,7 +169,7 @@
             label = "TAP_DANCE_0";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N0>, <&kp RPAR>, <&none>;
+            bindings = <&kp N0>, <&kp RPAR>;
         };
 
         // Special character tap dances for SYS layer
@@ -178,7 +178,7 @@
             label = "TAP_DANCE_GRAVE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp GRAVE>, <&kp TILDE>, <&none>;
+            bindings = <&kp GRAVE>, <&kp TILDE>;
         };
 
         td_equal: tap_dance_equal {
@@ -186,7 +186,7 @@
             label = "TAP_DANCE_EQUAL";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp EQUAL>, <&kp PLUS>, <&none>;
+            bindings = <&kp EQUAL>, <&kp PLUS>;
         };
 
         td_minus: tap_dance_minus {
@@ -194,7 +194,7 @@
             label = "TAP_DANCE_MINUS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp MINUS>, <&kp UNDER>, <&none>;
+            bindings = <&kp MINUS>, <&kp UNDER>;
         };
     };
 
