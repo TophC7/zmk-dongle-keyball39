@@ -1,7 +1,7 @@
 #define DEFAULT 0
-#define MOUSE   1
+#define SYS     1
 #define FUNC    2
-#define MISC    3
+#define MOUSE   3
 #define SCROLL  4
 #define SNIPE   5
 
@@ -17,13 +17,13 @@
 &lt {
     tapping-term-ms = <240>;
     flavor = "balanced";
-    quick-tap-ms = <150>;
+    quick-tap-ms = <120>;
 };
 
 &mt {
-    tapping-term-ms = <200>;
+    tapping-term-ms = <120>;
     flavor = "tap-preferred";
-    quick-tap-ms = <150>;
+    quick-tap-ms = <120>;
 };
 
 &caps_word { continue-list = <UNDERSCORE MINUS>; };
@@ -32,93 +32,12 @@
     // custom shift using mod-morph 
 
     behaviors {
-        // Tap dances for first row - letter, number, symbol
-        td_q: tap_dance_q {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_Q";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp Q>, <&kp N1>, <&kp EXCL>;
-        };
-
-        td_w: tap_dance_w {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_W";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp W>, <&kp N2>, <&kp AT>;
-        };
-
-        td_f: tap_dance_f {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_F";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp F>, <&kp N3>, <&kp HASH>;
-        };
-
-        td_p: tap_dance_p {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_P";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp P>, <&kp N4>, <&kp DLLR>;
-        };
-
-        td_g: tap_dance_g {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_G";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp G>, <&kp N5>, <&kp PRCNT>;
-        };
-
-        td_j: tap_dance_j {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_J";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp J>, <&kp N6>, <&kp CARET>;
-        };
-
-        td_l: tap_dance_l {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_L";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp L>, <&kp N7>, <&kp AMPS>;
-        };
-
-        td_u: tap_dance_u {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_U";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp U>, <&kp N8>, <&kp STAR>;
-        };
-
-        td_y: tap_dance_y {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_Y";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp Y>, <&kp N9>, <&kp LPAR>;
-        };
-
-        td_semi: tap_dance_semi {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_SEMI";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp SEMI>, <&kp N0>, <&kp RPAR>;
-        };
-
         // Tap dances for shift keys - shift, alt, compose
         td_lshift: tap_dance_lshift {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_LSHIFT";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <120>;
             bindings = <&kp LSHFT>, <&kp LALT>, <&kp K_APP>;
         };
 
@@ -126,37 +45,172 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_RSHIFT";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <120>;
             bindings = <&kp RSHFT>, <&kp RALT>, <&kp K_APP>;
         };
 
-        // Tap dance for enter - enter, layer 2
-        td_enter: tap_dance_enter {
+        // Tap dance for GUI - gui, SYS layer, FUNC layer
+        td_gui: tap_dance_gui {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_ENTER";
+            label = "TAP_DANCE_GUI";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp ENTER>, <&mo FUNC>;
+            tapping-term-ms = <120>;
+            bindings = <&kp LGUI>, <&mo SYS>, <&mo FUNC>;
         };
 
-        // Hold-tap for ctrl - tap = toggle layer 1, hold = ctrl
+        // Hold-tap for CTRL - tap = ESC, hold = CTRL
         ht_ctrl: hold_tap_ctrl {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAP_CTRL";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <120>;
             flavor = "tap-preferred";
-            bindings = <&kp>, <&tog>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        // Layer-tap for space - tap = space, hold = layer 1
+        lt_space: layer_tap_space {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_SPACE";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <120>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
+
+        // Layer-tap for enter - tap = enter, hold = layer 2
+        lt_enter: layer_tap_enter {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_ENTER";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <120>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
+
+        // SYS layer tap dances for numbers/symbols
+        td_1: tap_dance_1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_1";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N1>, <&kp EXCL>, <&none>;
+        };
+
+        td_2: tap_dance_2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N2>, <&kp AT>, <&none>;
+        };
+
+        td_3: tap_dance_3 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_3";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N3>, <&kp HASH>, <&none>;
+        };
+
+        td_4: tap_dance_4 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_4";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N4>, <&kp DLLR>, <&none>;
+        };
+
+        td_5: tap_dance_5 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_5";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N5>, <&kp PRCNT>, <&none>;
+        };
+
+        td_6: tap_dance_6 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_6";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N6>, <&kp CARET>, <&none>;
+        };
+
+        td_7: tap_dance_7 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_7";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N7>, <&kp AMPS>, <&none>;
+        };
+
+        td_8: tap_dance_8 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_8";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N8>, <&kp STAR>, <&none>;
+        };
+
+        td_9: tap_dance_9 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_9";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N9>, <&kp LPAR>, <&none>;
+        };
+
+        td_0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp N0>, <&kp RPAR>, <&none>;
+        };
+
+        // Special character tap dances for SYS layer
+        td_grave: tap_dance_grave {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_GRAVE";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp GRAVE>, <&kp TILDE>, <&none>;
+        };
+
+        td_equal: tap_dance_equal {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_EQUAL";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp EQUAL>, <&kp PLUS>, <&none>;
+        };
+
+        td_minus: tap_dance_minus {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_MINUS";
+            #binding-cells = <0>;
+            tapping-term-ms = <120>;
+            bindings = <&kp MINUS>, <&kp UNDER>, <&none>;
         };
     };
 
     macros {
-        Hiragana: Hiragana {
+        macro_l: macro_l {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(SPACE)>;
-            label = "HIRAGANA";
+            bindings = <&kp N9 &kp H &kp N2 &kp I &kp U &kp AMPS &kp N3 &kp B &kp S &kp T &kp J &kp H &kp N3 &kp P>;
+            label = "MACRO_L";
+        };
+
+        macro_u: macro_u {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp T &kp O &kp O &kp R &kp N4 &kp N0 &kp N4>;
+            label = "MACRO_U";
         };
     };
 
@@ -166,40 +220,40 @@
         default_layer {
             label = "COLEMAK";
             bindings = <
-&td_q     &td_w &td_f &td_p &td_g                          &td_j           &td_l     &td_u     &td_y    &td_semi
-&kp A     &kp R &kp S &kp T &kp D                          &kp H           &kp N     &kp E     &kp I    &kp O
-&kp Z     &kp X &kp C &kp V &kp B                          &kp K           &kp M     &kp COMMA &kp DOT  &kp SQT
-&kp LCTRL                   &kp LGUI &td_lshift &td_rshift &lt MOUSE SPACE &td_enter &kp LBKT  &kp RBKT &kp BSLH
+&kp Q              &kp W &kp F &kp P &kp G                         &kp J               &kp L                &kp U     &kp Y    &kp SEMI
+&kp A              &kp R &kp S &kp T &kp D                         &kp H               &kp N                &kp E     &kp I    &kp O
+&kp Z              &kp X &kp C &kp V &kp B                         &kp K               &kp M                &kp COMMA &kp DOT  &kp SQT
+&ht_ctrl LCTRL ESC                   &td_gui &td_lshift &td_rshift &lt_space SYS SPACE &lt_enter FUNC ENTER &kp LBKT  &kp RBKT &kp FSLH
             >;
         };
 
-        mouse_layer {
-            label = "MOUSE";
+        sys_layer {
+            label = "SYS";
             bindings = <
-&kp ESC     &trans    &trans    &trans     &trans                  &trans &trans   &trans   &trans    &trans
-&trans      &mkp LCLK &mkp MCLK &mkp RCLK  &trans                  &trans &kp HOME &kp UP   &kp END   &kp PG_DN
-&tog FUNC   &trans    &trans    &trans     &trans                  &trans &kp LEFT &kp DOWN &kp RIGHT &kp PG_UP
-&to DEFAULT                                &kp BSPC &kp DEL &trans  &trans &trans   &trans   &trans    &trans
+&td_1   &td_2  &td_3  &td_4     &td_5                &td_6  &td_7    &td_8    &td_9     &td_0
+&trans  &trans &trans &td_grave &td_equal            &trans &kp HOME &kp UP   &kp END   &kp PG_UP
+&trans  &trans &trans &trans    &td_minus            &trans &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN
+&trans                          &trans &trans &trans &trans &trans   &trans   &kp DEL   &kp BSPC
             >;
         };
 
         func_layer {
             label = "FUNC";
             bindings = <
-&kp F1 &kp F2 &kp F3 &kp F4  &kp F5                 &trans  &trans &trans     &kp C_BRI_UP &kp C_VOL_UP
-&kp F6 &kp F7 &kp F8 &kp F9  &kp F10                &trans  &trans &trans     &kp C_BRI_DN &kp C_VOL_DN
-&trans &trans &trans &kp F11 &kp F12                &trans  &trans &kp C_PREV &kp C_PP     &kp C_NEXT
-&to DEFAULT                  &trans  &trans  &trans &trans  &trans &trans     &trans       &kp C_MUTE
+&kp F1 &kp F2 &kp F3 &kp F4  &kp F5                 &trans &macro_l &macro_u   &kp C_BRI_UP &kp C_VOL_UP
+&kp F6 &kp F7 &kp F8 &kp F9  &kp F10                &trans &trans   &trans     &kp C_BRI_DN &kp C_VOL_DN
+&trans &trans &trans &kp F11 &kp F12                &trans &trans   &kp C_PREV &kp C_PP     &kp C_NEXT
+&trans                       &trans  &trans  &trans &trans &trans   &trans     &kp PSCRN    &kp C_MUTE
             >;
         };
 
-        misc_layer {
-            label = "MISC";
+        mouse_layer {
+            label = "MOUSE";
             bindings = <
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans &trans    &trans    &trans    &trans               &trans &trans &trans &trans &trans
+&trans &mkp LCLK &mkp MCLK &mkp RCLK &trans               &trans &trans &trans &trans &trans
+&trans &trans    &trans    &trans    &trans               &trans &trans &trans &trans &trans
+&trans                               &trans &trans &trans &trans &trans &trans &trans &trans
             >;
         };
 
