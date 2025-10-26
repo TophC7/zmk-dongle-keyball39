@@ -4,6 +4,7 @@
 #define MOUSE   3
 #define SCROLL  4
 #define SNIPE   5
+#define PLAIN   6
 
 #include <behaviors/mouse_keys.dtsi>
 #include <dt-bindings/zmk/mouse.h>
@@ -32,6 +33,11 @@
     // custom shift using mod-morph 
 
     behaviors {
+        bootloader: bootloader {
+            compatible = "zmk,behavior-bootloader";
+            #binding-cells = <0>;
+        };
+
         // Tap dances for shift keys - shift, alt, compose
         td_lshift: tap_dance_lshift {
             compatible = "zmk,behavior-tap-dance";
@@ -233,27 +239,27 @@
 &td_1   &td_2  &td_3  &td_4     &td_5                &td_6  &td_7    &td_8    &td_9     &td_0
 &trans  &trans &trans &td_grave &td_equal            &trans &kp HOME &kp UP   &kp END   &kp PG_UP
 &trans  &trans &trans &trans    &td_minus            &trans &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN
-&trans                          &trans &trans &trans &trans &trans   &trans   &kp DEL   &kp BSPC
+&trans                          &trans &trans &trans &trans &trans   &trans   &kp BSPC  &kp DEL
             >;
         };
 
         func_layer {
             label = "FUNC";
             bindings = <
-&kp F1 &kp F2 &kp F3 &kp F4  &kp F5                 &trans &macro_l &macro_u   &kp C_BRI_UP &kp C_VOL_UP
-&kp F6 &kp F7 &kp F8 &kp F9  &kp F10                &trans &trans   &trans     &kp C_BRI_DN &kp C_VOL_DN
-&trans &trans &trans &kp F11 &kp F12                &trans &trans   &kp C_PREV &kp C_PP     &kp C_NEXT
-&trans                       &trans  &trans  &trans &trans &trans   &trans     &kp PSCRN    &kp C_MUTE
+&kp F1 &kp F2 &kp F3 &kp F4  &kp F5                           &trans &macro_l &macro_u   &kp C_BRI_UP &kp C_VOL_UP
+&kp F6 &kp F7 &kp F8 &kp F9  &kp F10                          &trans &trans   &trans     &kp C_BRI_DN &kp C_VOL_DN
+&trans &trans &trans &kp F11 &kp F12                          &trans &trans   &kp C_PREV &kp C_PP     &kp C_NEXT
+&trans                       &trans  &bootloader  &bootloader &trans &trans   &trans     &kp PSCRN    &kp C_MUTE
             >;
         };
 
         mouse_layer {
             label = "MOUSE";
             bindings = <
-&trans &trans    &mkp MCLK  &trans    &trans               &trans &trans &trans &trans &trans
-&trans &mkp LCLK &mo SCROLL &mkp RCLK &trans               &trans &trans &trans &trans &trans
-&trans &trans    &mo SNIPE  &trans    &trans               &trans &trans &trans &trans &trans
-&trans                                &trans &trans &trans &trans &trans &trans &trans &trans
+&tog PLAIN &trans    &mkp MCLK  &trans    &trans               &trans &trans &trans &trans &trans
+&trans     &mkp LCLK &mo SCROLL &mkp RCLK &trans               &trans &trans &trans &trans &trans
+&trans     &trans    &mo SNIPE  &trans    &trans               &trans &trans &trans &trans &trans
+&trans                                    &trans &trans &trans &trans &trans &trans &trans &trans
             >;
         };
 
@@ -274,6 +280,16 @@
 &trans  &mkp LCLK &trans &mkp RCLK &trans                  &trans  &trans  &trans  &trans  &trans
 &trans  &trans    &trans  &trans   &trans                  &trans  &trans  &trans  &trans  &trans
 &trans                             &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        plain_layer {
+            label = "PLAIN";
+            bindings = <
+&kp Q       &kp W     &kp F     &kp P     &kp G                     &kp J      &kp L      &kp U      &kp Y    &kp SEMI
+&kp A       &kp R     &kp S     &kp T     &kp D                     &kp H      &kp N      &kp E      &kp I    &kp O
+&kp Z       &kp X     &kp C     &kp V     &kp B                     &kp K      &kp M      &kp COMMA  &kp DOT  &kp SQT
+&kp LCTRL                       &kp LGUI  &kp LSHFT  &kp RSHFT      &kp SPACE  &kp ENTER  &kp LBKT   &kp RBKT &kp FSLH
             >;
         };
     };
