@@ -169,7 +169,7 @@
 &td_q      &td_w         &td_f     &td_p         &td_g                                    &td_j            &td_l  &td_u      &td_y    &td_semi
 &kp A      &kp R         &kp S     &kp T         &kp D                                    &kp H            &kp N  &kp E      &kp I    &kp O
 &kp Z      &kp X         &kp C     &kp V         &kp B                                    &kp K            &kp M  &kp COMMA  &kp DOT  &kp SQT
-&kp A  &kp B  &kp C  &kp D  &kp E  &kp F  &kp G  &kp H  &kp I
+&kp LCTRL  &kp LGUI  &td_lshift  &td_rshift  &lt MOUSE SPACE  &td_enter  &kp LBKT  &kp RBKT  &kp BSLH
             >;
         };
 
