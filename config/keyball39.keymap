@@ -197,6 +197,15 @@
             tapping-term-ms = <200>;
             bindings = <&kp MINUS>, <&kp UNDER>;
         };
+
+        // PLAIN layer X key - x, esc, toggle out of layer
+        td_plain_x: tap_dance_plain_x {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_PLAIN_X";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp X>, <&kp ESC>, <&tog PLAIN>;
+        };
     };
 
     macros {
@@ -281,10 +290,10 @@
         plain_layer {
             label = "PLAIN";
             bindings = <
-&kp Q       &kp W     &kp F     &kp P     &kp G                     &kp J      &kp L      &kp U      &kp Y    &kp SEMI
-&kp A       &kp R     &kp S     &kp T     &kp D                     &kp H      &kp N      &kp E      &kp I    &kp O
-&kp Z       &kp X     &kp C     &kp V     &kp B                     &kp K      &kp M      &kp COMMA  &kp DOT  &kp SQT
-&kp LCTRL                       &kp LGUI  &kp LSHFT  &kp RSHFT      &kp SPACE  &kp ENTER  &kp LBKT   &kp RBKT &kp FSLH
+&kp Q       &kp W        &kp F     &kp P     &kp G                &kp J      &kp L      &kp U      &kp Y    &kp SEMI
+&kp A       &kp R        &kp S     &kp T     &kp D                &kp H      &kp N      &kp E      &kp I    &kp O
+&kp Z       &td_plain_x  &kp C     &kp V     &kp B                &kp K      &kp M      &kp COMMA  &kp DOT  &kp SQT
+&kp LCTRL                          &kp LGUI  &kp LSHFT  &kp RSHFT &kp SPACE  &kp ENTER  &kp LBKT   &kp RBKT &kp FSLH
             >;
         };
     };
