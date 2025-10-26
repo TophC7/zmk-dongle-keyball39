@@ -30,14 +30,9 @@
 &caps_word { continue-list = <UNDERSCORE MINUS>; };
 
 / {
-    // custom shift using mod-morph 
+    // custom shift using mod-morph
 
     behaviors {
-        bootloader: bootloader {
-            compatible = "zmk,behavior-bootloader";
-            #binding-cells = <0>;
-        };
-
         // Tap dances for shift keys - shift, alt, compose
         td_lshift: tap_dance_lshift {
             compatible = "zmk,behavior-tap-dance";
