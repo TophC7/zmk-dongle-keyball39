@@ -57,7 +57,7 @@
             label = "TAP_DANCE_ALT_GUI_FUNC";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LALT>, <&kp LGUI>, <&mo FUNC>;
+            bindings = <&mo ALT>, <&kp LGUI>, <&mo FUNC>;
         };
 
         // Hold-tap for space/ALT layer
@@ -166,9 +166,9 @@
             label = "ARROW";
             bindings = <
 &trans &trans &trans &trans &trans               &trans &trans   &kp HOME &trans    &kp PG_UP
-&trans &trans &trans &trans &trans               &trans &kp LEFT &kp UP   &kp DOWN  &kp RIGHT
-&trans &trans &trans &trans &trans               &trans &trans   &kp END  &trans    &kp PG_DN
-&trans                      &trans &trans &trans &trans &trans   &trans   &trans    &trans
+&trans &trans &trans &trans &trans               &trans &kp LEFT &kp END  &kp UP    &kp PG_DN
+&trans &trans &trans &trans &trans               &trans &trans   &kp LEFT &kp DOWN  &kp RIGHT
+&trans                      &trans &trans &trans &trans &trans   &trans   &trans    &kp PSCRN
             >;
         };
 
