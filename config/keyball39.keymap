@@ -35,20 +35,12 @@
 
     behaviors {
         // Tap dances for shift keys - shift, alt, compose
-        td_lshift: tap_dance_lshift {
+        td_shift: tap_dance_shift {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_LSHIFT";
+            label = "TAP_DANCE_SHIFT";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&kp LALT>, <&kp K_APP>;
-        };
-
-        td_rshift: tap_dance_rshift {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_RSHIFT";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp RSHFT>, <&kp RALT>, <&kp K_APP>;
         };
 
         // Tap dance for ALT/GUI/FUNC
@@ -58,50 +50,6 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mo ALT>, <&kp LGUI>, <&mo FUNC>;
-        };
-
-        // Hold-tap for space/ALT layer
-        lt_space_alt: layer_tap_space_alt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_SPACE_ALT";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;
-        };
-
-        // Hold-tap for enter/ARROW layer
-        lt_enter_arrow: layer_tap_enter_arrow {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_ENTER_ARROW";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;
-        };
-
-        // Hold-tap for tab/FUNC layer
-        lt_tab_func: layer_tap_tab_func {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_TAB_FUNC";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;
-        };
-
-        // Hold-tap for CTRL - tap = ESC, hold = CTRL
-        ht_ctrl: hold_tap_ctrl {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_CTRL";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
         };
 
         // PLAIN layer X key - x, esc, toggle out of layer
@@ -145,11 +93,11 @@
         default_layer {
             label = "COLEMAK";
             bindings = <
-&kp Q              &kp W &kp F &kp P &kp G                                               &kp J      &kp L                       &kp U                 &kp Y    &kp SEMI
-&kp A              &kp R &kp S &kp T &kp D                                               &kp H      &kp N                       &kp E                 &kp I    &kp O
-&kp Z              &kp X &kp C &kp V &kp B                                               &kp K      &kp M                       &kp COMMA             &kp DOT  &kp SQT
-&ht_ctrl LCTRL ESC                   &td_lshift &td_alt_gui_func &lt_space_alt ALT SPACE &td_rshift &lt_enter_arrow ARROW ENTER &lt_tab_func FUNC TAB &kp BSPC &kp DEL
-            >;
+&kp Q           &kp W &kp F &kp P &kp G                                    &kp J     &kp L           &kp U        &kp Y    &kp SEMI
+&kp A           &kp R &kp S &kp T &kp D                                    &kp H     &kp N           &kp E        &kp I    &kp O
+&kp Z           &kp X &kp C &kp V &kp B                                    &kp K     &kp M           &kp COMMA    &kp DOT  &kp SQT
+&mt LCTRL ESC                     &td_shift &td_alt_gui_func &lt ALT SPACE &td_shift &lt ARROW ENTER &lt FUNC TAB &kp BSPC &kp DEL
+           >;
         };
 
         alt_layer {
@@ -178,17 +126,17 @@
 &kp F1     &kp F2     &kp F3     &kp F4  &kp F5                    &trans &macro_l    &macro_u   &kp C_BRI_UP &kp C_VOL_UP
 &kp F6     &kp F7     &kp F8     &kp F9  &kp F10                   &trans &trans      &trans     &kp C_BRI_DN &kp C_VOL_DN
 &bt BT_PRV &bt BT_CLR &bt BT_NXT &kp F11 &kp F12                   &trans &trans      &kp C_PREV &kp C_PP     &kp C_NEXT
-&trans                                   &bootloader &trans &trans &bootloader &trans &trans     &trans       &kp C_MUTE
+&tog PLAIN                               &bootloader &trans &trans &bootloader &trans &trans     &trans       &kp C_MUTE
             >;
         };
 
         mouse_layer {
             label = "MOUSE";
             bindings = <
-&tog PLAIN &trans    &mkp MCLK  &trans    &trans               &trans &trans &trans &trans &trans
-&trans     &mkp LCLK &mo SCROLL &mkp RCLK &trans               &trans &trans &trans &trans &trans
-&trans     &trans    &mo SNIPE  &trans    &trans               &trans &trans &trans &trans &trans
-&trans                                    &trans &trans &trans &trans &trans &trans &trans &trans
+&trans &trans    &mkp MCLK  &trans    &trans               &trans &trans &trans &trans &trans
+&trans &mkp LCLK &mo SCROLL &mkp RCLK &trans               &trans &trans &trans &trans &trans
+&trans &trans    &mo SNIPE  &trans    &trans               &trans &trans &trans &trans &trans
+&trans                                &trans &trans &trans &trans &trans &trans &trans &trans
             >;
         };
 
@@ -218,7 +166,7 @@
 &kp Q     &kp W       &kp F &kp P &kp G                        &kp J     &kp L      &kp U      &kp Y    &kp SEMI
 &kp A     &kp R       &kp S &kp T &kp D                        &kp H     &kp N      &kp E      &kp I    &kp O
 &kp Z     &td_plain_x &kp C &kp V &kp B                        &kp K     &kp M      &kp COMMA  &kp DOT  &kp SQT
-&kp LCTRL                         &kp LSHFT &kp LGUI &kp SPACE &kp RSHFT &kp ENTER  &trans     &trans   &trans
+&kp LCTRL                         &kp LSHFT &kp LGUI &kp SPACE &kp LSHFT &kp ENTER  &kp TAB    &trans   &trans
             >;
         };
     };
