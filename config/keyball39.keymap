@@ -93,10 +93,10 @@
         default_layer {
             label = "COLEMAK";
             bindings = <
-&kp Q           &kp W &kp F &kp P &kp G                                    &kp J     &kp L           &kp U        &kp Y    &kp SEMI
-&kp A           &kp R &kp S &kp T &kp D                                    &kp H     &kp N           &kp E        &kp I    &kp O
-&kp Z           &kp X &kp C &kp V &kp B                                    &kp K     &kp M           &kp COMMA    &kp DOT  &kp SQT
-&mt LCTRL ESC                     &td_shift &td_alt_gui_func &lt ALT SPACE &td_shift &lt ARROW ENTER &lt FUNC TAB &kp BSPC &kp DEL
+&kp Q         &kp W &kp F &kp P &kp G                                    &kp J     &kp L           &kp U        &kp Y   &kp BSPC
+&kp A         &kp R &kp S &kp T &kp D                                    &kp H     &kp N           &kp E        &kp I   &kp O
+&kp Z         &kp X &kp C &kp V &kp B                                    &kp K     &kp M           &kp COMMA    &kp DOT &kp SQT
+&mt LCTRL ESC                   &td_shift &td_alt_gui_func &lt ALT SPACE &td_shift &lt ARROW ENTER &lt FUNC DEL &kp TAB &kp SEMI
            >;
         };
 
@@ -163,10 +163,10 @@
         plain_layer {
             label = "PLAIN";
             bindings = <
-&kp Q     &kp W       &kp F &kp P &kp G                        &kp J     &kp L      &kp U      &kp Y    &kp SEMI
+&kp Q     &kp W       &kp F &kp P &kp G                        &kp J     &kp L      &kp U      &kp Y    &trans
 &kp A     &kp R       &kp S &kp T &kp D                        &kp H     &kp N      &kp E      &kp I    &kp O
 &kp Z     &td_plain_x &kp C &kp V &kp B                        &kp K     &kp M      &kp COMMA  &kp DOT  &kp SQT
-&kp LCTRL                         &kp LSHFT &kp LGUI &kp SPACE &kp LSHFT &kp ENTER  &kp TAB    &trans   &trans
+&kp LCTRL                         &kp LSHFT &kp LGUI &kp SPACE &kp LSHFT &kp ENTER  &kp DEL    &trans   &trans
             >;
         };
     };
