@@ -1,10 +1,18 @@
 /*
- * Copyright (c) 2024 Keyball39
+ * Copyright (c) 2024 Keyball39 Dongle
  *
  * SPDX-License-Identifier: MIT
  */
 
 / {
-    /* Dongle has no physical keys - no kscan needed */
-    /* It only acts as a wireless receiver */
+    chosen {
+        zmk,kscan = &mock_kscan;
+    };
+
+    mock_kscan: mock_kscan_0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
 };
