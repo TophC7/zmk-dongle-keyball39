@@ -15,7 +15,17 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [
+              "segger-jlink-qt4-824"
+              "segger-jlink-qt4-874"
+            ];
+            segger-jlink.acceptLicense = true;
+          };
+        };
       in
       {
         devShells.default = pkgs.mkShell {
@@ -27,6 +37,11 @@
 
             # GitHub Actions local runner (requires Docker)
             act
+
+            # nRF52 firmware flashing tools
+            nrf-command-line-tools  # nrfjprog and mergehex
+            openocd                 # Open On-Chip Debugger
+            adafruit-nrfutil        # Adafruit's nRF52 DFU utility
 
             # Optional: If you want to build locally without Docker
             # Uncomment these lines:

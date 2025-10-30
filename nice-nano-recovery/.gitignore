@@ -1,0 +1,15 @@
+# Bootloader files (download separately)
+*.hex
+*.bin
+*.uf2
+
+# Temporary files
+*.tmp
+/tmp/
+
+# Log files
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,18 +1,32 @@
 if SHIELD_KEYBALL39_LEFT
 
 config ZMK_KEYBOARD_NAME
-	default "Keyball39"
+	default "Keyball39 L"
+
+endif
+
+if SHIELD_KEYBALL39_RIGHT
+
+config ZMK_KEYBOARD_NAME
+	default "Keyball39 R"
+
+endif
+
+if SHIELD_KEYBALL39_DONGLE
+
+config ZMK_KEYBOARD_NAME
+	default "Keyball39 Dongle"
 
 config ZMK_SPLIT_BLE_ROLE_CENTRAL
 	default y
 
 endif
 
-if SHIELD_KEYBALL39_LEFT || SHIELD_KEYBALL39_RIGHT
+if SHIELD_KEYBALL39_LEFT || SHIELD_KEYBALL39_RIGHT || SHIELD_KEYBALL39_DONGLE
 
 config ZMK_SPLIT
 	default y
-	
+
 endif
 
 if ZMK_DISPLAY

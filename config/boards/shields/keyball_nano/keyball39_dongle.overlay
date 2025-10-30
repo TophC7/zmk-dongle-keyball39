@@ -1,0 +1,10 @@
+/*
+ * Copyright (c) 2024 Keyball39
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/ {
+    /* Dongle has no physical keys - no kscan needed */
+    /* It only acts as a wireless receiver */
+};
