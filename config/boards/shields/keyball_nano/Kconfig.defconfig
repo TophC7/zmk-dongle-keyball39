@@ -15,7 +15,7 @@ endif
 if SHIELD_KEYBALL39_DONGLE
 
 config ZMK_KEYBOARD_NAME
-	default "Keyball39 Dongle"
+	default "KB39 Dongle"
 
 config ZMK_SPLIT_BLE_ROLE_CENTRAL
 	default y
