@@ -39,18 +39,9 @@
             act
 
             # nRF52 firmware flashing tools
-            nrf-command-line-tools  # nrfjprog and mergehex
-            openocd                 # Open On-Chip Debugger
-            adafruit-nrfutil        # Adafruit's nRF52 DFU utility
-
-            # Optional: If you want to build locally without Docker
-            # Uncomment these lines:
-            # python3
-            # python3Packages.west
-            # cmake
-            # ninja
-            # gcc-arm-embedded
-            # dtc
+            nrf-command-line-tools # nrfjprog and mergehex
+            openocd # Open On-Chip Debugger
+            adafruit-nrfutil # Adafruit's nRF52 DFU utility
           ];
         };
       }
