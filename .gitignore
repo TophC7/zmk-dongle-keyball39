@@ -6,6 +6,7 @@ result-*
 # Build artifacts
 build/
 firmware/
+uf2/
 
 # West/Zephyr artifacts (if building locally)
 .west/
@@ -28,3 +29,4 @@ Thumbs.db
 *.swo
 *~
 *.bak
+bak/
