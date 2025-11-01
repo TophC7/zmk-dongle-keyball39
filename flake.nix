@@ -58,30 +58,36 @@
           pkgs = nixpkgs.legacyPackages.${system};
           buildAndCopy = pkgs.writeShellScriptBin "build-and-copy" ''
             set -euo pipefail
-            echo "Building ZMK firmware..."
+
+            echo "🔨 Building Keyball39 firmware..."
             ${pkgs.nix}/bin/nix build
-            echo "Creating uf2 directory if it doesn't exist..."
+
+            echo "📦 Preparing firmware files..."
             ${pkgs.coreutils}/bin/mkdir -p ./uf2
-            echo "Copying firmware files..."
-            ${pkgs.coreutils}/bin/cp -L result/zmk_left.uf2 ./uf2/zmk_left.uf2
-            ${pkgs.coreutils}/bin/cp -L result/zmk_right.uf2 ./uf2/zmk_right.uf2
-            echo "✓ Build complete: zmk_left.uf2, zmk_right.uf2"
+            ${pkgs.coreutils}/bin/rm -f ./uf2/*.uf2
+
+            echo "📋 Copying firmware files (dereferencing symlinks)..."
+            ${pkgs.coreutils}/bin/cp -L result/*.uf2 ./uf2/
+
+            echo ""
+            echo "✅ Build complete! Firmware files in uf2/:"
+            ${pkgs.coreutils}/bin/ls -lh uf2/*.uf2
           '';
         in
         {
           default = {
             type = "app";
-            program = "${self.packages.${system}.default}/bin/flash";
-          };
-
-          flash = {
-            type = "app";
-            program = "${self.packages.${system}.default}/bin/flash";
+            program = "${buildAndCopy}/bin/build-and-copy";
           };
 
           build = {
             type = "app";
             program = "${buildAndCopy}/bin/build-and-copy";
+          };
+
+          flash = {
+            type = "app";
+            program = "${self.packages.${system}.default}/bin/flash";
           };
 
           update = zmk-nix.apps.${system}.update;
