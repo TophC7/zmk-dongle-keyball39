@@ -52,19 +52,41 @@
       });
 
       # Convenience outputs for building and flashing
-      apps = forAllSystems (system: {
-        default = {
-          type = "app";
-          program = "${self.packages.${system}.default}/bin/flash";
-        };
+      apps = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          buildAndCopy = pkgs.writeShellScriptBin "build-and-copy" ''
+            set -euo pipefail
+            echo "Building ZMK firmware..."
+            ${pkgs.nix}/bin/nix build
+            echo "Creating uf2 directory if it doesn't exist..."
+            ${pkgs.coreutils}/bin/mkdir -p ./uf2
+            echo "Copying firmware files..."
+            ${pkgs.coreutils}/bin/cp -L result/zmk_left.uf2 ./uf2/zmk_left.uf2
+            ${pkgs.coreutils}/bin/cp -L result/zmk_right.uf2 ./uf2/zmk_right.uf2
+            echo "✓ Build complete: zmk_left.uf2, zmk_right.uf2"
+          '';
+        in
+        {
+          default = {
+            type = "app";
+            program = "${self.packages.${system}.default}/bin/flash";
+          };
 
-        flash = {
-          type = "app";
-          program = "${self.packages.${system}.default}/bin/flash";
-        };
+          flash = {
+            type = "app";
+            program = "${self.packages.${system}.default}/bin/flash";
+          };
 
-        update = zmk-nix.apps.${system}.update;
-      });
+          build = {
+            type = "app";
+            program = "${buildAndCopy}/bin/build-and-copy";
+          };
+
+          update = zmk-nix.apps.${system}.update;
+        }
+      );
 
       # Dev shell for local development
       devShells = forAllSystems (system: {

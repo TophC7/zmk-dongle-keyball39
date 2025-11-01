@@ -3,10 +3,6 @@ result
 result-*
 .direnv/
 
-# Act artifacts
-.act-artifacts/
-*.uf2
-
 # Build artifacts
 build/
 firmware/
