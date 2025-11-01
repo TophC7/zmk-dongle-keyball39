@@ -3,6 +3,9 @@ if SHIELD_KEYBALL39_DONGLE
 config ZMK_KEYBOARD_NAME
 	default "Keyball39"
 
+config ZMK_SPLIT
+	default y
+
 config ZMK_SPLIT_ROLE_CENTRAL
 	default y
 
