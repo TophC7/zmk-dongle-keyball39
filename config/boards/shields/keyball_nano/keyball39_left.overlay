@@ -5,6 +5,7 @@
  */
 
 #include "keyball39.dtsi"
+#include <input/processors.dtsi>
 
 &kscan0 {
 	col-gpios
@@ -56,8 +57,6 @@
         cpi = <1000>;
         invert-x;
         invert-y;
-        // TODO: Re-enable automouse layer once we figure out correct property
-        // automouse-layer = <4>;
     };
 };
 
@@ -65,6 +64,9 @@
   trackball_listener {
     compatible = "zmk,input-listener";
     device = <&trackball>;
+
+    // Automouse: activate MOUSE layer (4) on movement, timeout after 720ms
+    input-processors = <&zip_temp_layer 4 720>;
 
     // TODO: Re-enable scroll and snipe modes once input processors are properly configured
     // Scroll mode - convert XY movement to scroll on layer 5
