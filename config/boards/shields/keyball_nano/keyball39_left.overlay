@@ -56,7 +56,6 @@
         y-input-code = <0x01>;  // REL_Y
         cpi = <1000>;
         invert-x;
-        invert-y;
     };
 };
 
@@ -65,20 +64,19 @@
     compatible = "zmk,input-listener";
     device = <&trackball>;
 
-    // Automouse: activate MOUSE layer (4) on movement, timeout after 720ms
+    // Default: Automouse - activate MOUSE layer (4) on movement, timeout after 720ms
     input-processors = <&zip_temp_layer 4 720>;
 
-    // TODO: Re-enable scroll and snipe modes once input processors are properly configured
-    // Scroll mode - convert XY movement to scroll on layer 5
-    // scroll_mode {
-    //   layers = <5>;
-    //   input-processors = <&zip_xy_to_scroll_mapper>;
-    // };
+    // Scroll mode - convert XY movement to scroll wheel on layer 5
+    scroller {
+      layers = <5>;
+      input-processors = <&zip_xy_to_scroll_mapper>;
+    };
 
-    // Snipe mode - slow down movement for precision on layer 6
-    // snipe_mode {
-    //   layers = <6>;
-    //   input-processors = <&zip_xy_scaler 1 4>;
-    // };
+    // Snipe mode - reduce speed to 1/4 for precision on layer 6
+    sniper {
+      layers = <6>;
+      input-processors = <&zip_xy_scaler 1 4>;
+    };
   };
 };
