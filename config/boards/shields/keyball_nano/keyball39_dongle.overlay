@@ -1,4 +1,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include "keyball39_trackball_split.dtsi"
+#include <input/processors.dtsi>
 
 / {
     chosen {
@@ -31,5 +33,25 @@
         display-name = "Default Layout";
         transform = <&default_transform>;
     };
-    
+
+};
+
+/* Enable the trackball listener on the dongle/central */
+&trackball_listener {
+    status = "okay";
+
+    // Default: Automouse - activate MOUSE layer (4) on movement, timeout after 720ms
+    input-processors = <&zip_temp_layer 4 720>;
+
+    // Scroll mode - convert XY movement to scroll wheel on layer 5
+    scroller {
+        layers = <5>;
+        input-processors = <&zip_xy_to_scroll_mapper>;
+    };
+
+    // Snipe mode - reduce speed to 1/4 for precision on layer 6
+    sniper {
+        layers = <6>;
+        input-processors = <&zip_xy_scaler 1 4>;
+    };
 };

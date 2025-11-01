@@ -5,6 +5,7 @@
  */
 
 #include "keyball39.dtsi"
+#include "keyball39_trackball_split.dtsi"
 #include <input/processors.dtsi>
 
 &kscan0 {
@@ -59,24 +60,9 @@
     };
 };
 
-/ {
-  trackball_listener {
-    compatible = "zmk,input-listener";
+/* Configure the trackball input-split to send data to central */
+&trackball_split {
     device = <&trackball>;
-
-    // Default: Automouse - activate MOUSE layer (4) on movement, timeout after 720ms
-    input-processors = <&zip_temp_layer 4 720>;
-
-    // Scroll mode - convert XY movement to scroll wheel on layer 5
-    scroller {
-      layers = <5>;
-      input-processors = <&zip_xy_to_scroll_mapper>;
-    };
-
-    // Snipe mode - reduce speed to 1/4 for precision on layer 6
-    sniper {
-      layers = <6>;
-      input-processors = <&zip_xy_scaler 1 4>;
-    };
-  };
+    /* Optional: Apply input processors before sending to central if needed */
+    /* input-processors = <&some_processor>; */
 };
