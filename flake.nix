@@ -38,7 +38,7 @@
             ".yml"
             "_defconfig"
           ];
-          commonHash = "sha256-MjjLh+k6hIRGz3IbClbKPo6PAuRur4bURSTmys5R0+U=";
+          commonHash = "sha256-eOVNRLH6PiRQS6euljILPD8rdjOU39cNaXdZuK2g3lw=";
         in
         {
           # Build left peripheral with nice!view
