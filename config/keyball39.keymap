@@ -41,13 +41,13 @@
             bindings = <&kp LSHFT>, <&mo ALT>, <&kp K_APP>;
         };
 
-        // PLAIN layer X key - x, esc, toggle out of layer
-        td_plain_x: tap_dance_plain_x {
+        // PLAIN layer G key - g, esc, toggle out of layer
+        td_plain_g: tap_dance_plain_g {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_PLAIN_X";
+            label = "TAP_DANCE_PLAIN_G";
             #binding-cells = <0>;
             tapping-term-ms = <160>;
-            bindings = <&kp X>, <&kp ESC>, <&tog PLAIN>;
+            bindings = <&kp G>, <&kp ESC>, <&tog PLAIN>;
         };
 
         // Number row tap dances - letter on tap, number on double tap
@@ -260,10 +260,10 @@
         plain_layer {
             label = "PLAIN";
             bindings = <
-&kp Q     &kp W       &kp F &kp P &kp G                        &kp J     &kp L      &kp U      &kp Y    &trans
-&kp A     &kp R       &kp S &kp T &kp D                        &kp H     &kp N      &kp E      &kp I    &kp O
-&kp Z     &td_plain_x &kp C &kp V &kp B                        &kp K     &kp M      &kp COMMA  &kp DOT  &kp SQT
-&kp LCTRL                         &kp LSHFT &kp LALT &kp SPACE &kp LSHFT &kp ENTER  &kp TAB    &trans   &trans
+&kp Q     &kp W  &kp F &kp P &td_plain_g                    &kp J    &kp L     &kp U      &kp Y    &trans
+&kp A     &kp R  &kp S &kp T &kp D                          &kp H    &kp N     &kp E      &kp I    &kp O
+&kp Z     &kp X  &kp C &kp V &kp B                          &kp K    &kp M     &kp COMMA  &kp DOT  &kp SQT
+&kp LCTRL                    &kp LSHFT   &kp LGUI &kp SPACE &kp LALT &kp ENTER &kp TAB    &trans   &trans
             >;
         };
     };

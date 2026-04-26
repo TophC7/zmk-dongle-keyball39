@@ -38,14 +38,14 @@
             ".yml"
             "_defconfig"
           ];
-          commonHash = "sha256-eOVNRLH6PiRQS6euljILPD8rdjOU39cNaXdZuK2g3lw=";
+          commonHash = "sha256-PsV4aEVAXCvvWpH75DSVIuA1III8kvh2DMdJroS//70=";
         in
         {
           # Build left peripheral with nice!view
           left = zmk-nix.legacyPackages.${system}.buildKeyboard {
             name = "keyball39-left";
             src = commonSrc;
-            board = "nice_nano_v2";
+            board = "nice_nano@2.0.0";
             shield = "keyball39_left nice_view_adapter nice_view";
             zephyrDepsHash = commonHash;
           };
@@ -54,7 +54,7 @@
           right = zmk-nix.legacyPackages.${system}.buildKeyboard {
             name = "keyball39-right";
             src = commonSrc;
-            board = "nice_nano_v2";
+            board = "nice_nano@2.0.0";
             shield = "keyball39_right nice_view_adapter nice_view";
             zephyrDepsHash = commonHash;
           };
@@ -63,7 +63,7 @@
           dongle = zmk-nix.legacyPackages.${system}.buildKeyboard {
             name = "keyball39-dongle";
             src = commonSrc;
-            board = "nice_nano_v2";
+            board = "nice_nano@2.0.0";
             shield = "keyball39_dongle nice_view_adapter nice_view";
             zephyrDepsHash = commonHash;
           };
@@ -72,7 +72,7 @@
           settings_reset = zmk-nix.legacyPackages.${system}.buildKeyboard {
             name = "settings_reset";
             src = commonSrc;
-            board = "nice_nano_v2";
+            board = "nice_nano@2.0.0";
             shield = "settings_reset";
             zephyrDepsHash = commonHash;
           };
@@ -84,7 +84,7 @@
               (zmk-nix.legacyPackages.${system}.buildKeyboard {
                 name = "keyball39-left";
                 src = commonSrc;
-                board = "nice_nano_v2";
+                board = "nice_nano@2.0.0";
                 shield = "keyball39_left nice_view_adapter nice_view";
                 zephyrDepsHash = commonHash;
                 extraCmakeFlags = [ "-DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n" ];
@@ -92,7 +92,7 @@
               (zmk-nix.legacyPackages.${system}.buildKeyboard {
                 name = "keyball39-right";
                 src = commonSrc;
-                board = "nice_nano_v2";
+                board = "nice_nano@2.0.0";
                 shield = "keyball39_right nice_view_adapter nice_view";
                 zephyrDepsHash = commonHash;
                 extraCmakeFlags = [ "-DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n" ];
@@ -100,7 +100,7 @@
               (zmk-nix.legacyPackages.${system}.buildKeyboard {
                 name = "keyball39-dongle";
                 src = commonSrc;
-                board = "nice_nano_v2";
+                board = "nice_nano@2.0.0";
                 shield = "keyball39_dongle nice_view_adapter nice_view";
                 zephyrDepsHash = commonHash;
               })
