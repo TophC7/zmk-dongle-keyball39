@@ -1,13 +1,16 @@
 manifest:
   remotes:
-    - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
+    - name: dgct
+      url-base: https://github.com/dgct
     - name: badjeff
       url-base: https://github.com/badjeff
   projects:
+    # dgct/zmk fork carries fix for #3207 (deep sleep wake on split keyboards)
+    # plus battery proxy throttling, BLE latency manager, USB sleep gating.
+    # Pinned to SHA to avoid drift; bump manually when needed.
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: dgct
+      revision: 28b34228ffbc3a3ed5ac96415cfb678e093d499f
       import: app/west.yml
     - name: zmk-pmw3610-driver
       remote: badjeff
