@@ -38,10 +38,11 @@
             ".yml"
             "_defconfig"
           ];
-          commonHash = "sha256-ZdCpT+850msBz8WlvRy0EXz2zXA15yN4bk5CHpRTSVg=";
+          # Bump when west.yml changes. If wrong, nix will print the expected hash.
+          commonHash = "sha256-tsXPA2PfcaJDpW/lT1bSn23AUPKvfLRi97SgScukmUU=";
         in
         {
-          # Build left peripheral with nice!view
+          # Build left central with nice!view
           left = zmk-nix.legacyPackages.${system}.buildKeyboard {
             name = "keyball39-left";
             src = commonSrc;
@@ -59,15 +60,6 @@
             zephyrDepsHash = commonHash;
           };
 
-          # Build dongle (central) with nice!view
-          dongle = zmk-nix.legacyPackages.${system}.buildKeyboard {
-            name = "keyball39-dongle";
-            src = commonSrc;
-            board = "nice_nano@2.0.0//zmk";
-            shield = "keyball39_dongle nice_view_adapter nice_view";
-            zephyrDepsHash = commonHash;
-          };
-
           # Build settings_reset
           settings_reset = zmk-nix.legacyPackages.${system}.buildKeyboard {
             name = "settings_reset";
@@ -77,33 +69,12 @@
             zephyrDepsHash = commonHash;
           };
 
-          # Combined package that builds all three
+          # Combined package that builds left + right
           default = pkgs.symlinkJoin {
             name = "keyball39-all";
             paths = [
-              (zmk-nix.legacyPackages.${system}.buildKeyboard {
-                name = "keyball39-left";
-                src = commonSrc;
-                board = "nice_nano@2.0.0//zmk";
-                shield = "keyball39_left nice_view_adapter nice_view";
-                zephyrDepsHash = commonHash;
-                extraCmakeFlags = [ "-DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n" ];
-              })
-              (zmk-nix.legacyPackages.${system}.buildKeyboard {
-                name = "keyball39-right";
-                src = commonSrc;
-                board = "nice_nano@2.0.0//zmk";
-                shield = "keyball39_right nice_view_adapter nice_view";
-                zephyrDepsHash = commonHash;
-                extraCmakeFlags = [ "-DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n" ];
-              })
-              (zmk-nix.legacyPackages.${system}.buildKeyboard {
-                name = "keyball39-dongle";
-                src = commonSrc;
-                board = "nice_nano@2.0.0//zmk";
-                shield = "keyball39_dongle nice_view_adapter nice_view";
-                zephyrDepsHash = commonHash;
-              })
+              self.packages.${system}.left
+              self.packages.${system}.right
             ];
           };
         }
@@ -117,13 +88,12 @@
           buildAndCopy = pkgs.writeShellScriptBin "build-and-copy" ''
             set -euo pipefail
 
-            echo "🔨 Building Keyball39 dongle firmware..."
-            echo "   Building left peripheral, right peripheral, and dongle central"
+            echo "🔨 Building Keyball39 firmware (left central + right peripheral)..."
 
             ${pkgs.coreutils}/bin/mkdir -p ./uf2
             ${pkgs.coreutils}/bin/rm -f ./uf2/*.uf2
 
-            echo "📦 Building left peripheral..."
+            echo "📦 Building left central..."
             ${pkgs.nix}/bin/nix build .#left -o result-left
             ${pkgs.coreutils}/bin/cp -L result-left/zmk.uf2 ./uf2/keyball39_left.uf2
             ${pkgs.coreutils}/bin/rm result-left
@@ -132,11 +102,6 @@
             ${pkgs.nix}/bin/nix build .#right -o result-right
             ${pkgs.coreutils}/bin/cp -L result-right/zmk.uf2 ./uf2/keyball39_right.uf2
             ${pkgs.coreutils}/bin/rm result-right
-
-            echo "📦 Building dongle central..."
-            ${pkgs.nix}/bin/nix build .#dongle -o result-dongle
-            ${pkgs.coreutils}/bin/cp -L result-dongle/zmk.uf2 ./uf2/keyball39_dongle.uf2
-            ${pkgs.coreutils}/bin/rm result-dongle
 
             echo "📦 Building settings_reset..."
             ${pkgs.nix}/bin/nix build .#settings_reset -o result-reset

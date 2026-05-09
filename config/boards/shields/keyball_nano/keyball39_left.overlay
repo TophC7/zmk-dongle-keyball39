@@ -70,9 +70,28 @@
     };
 };
 
-/* Configure the trackball input-split to send data to central */
+/* Wire the local trackball into the input-split → listener chain.
+ * Left is central, so device + listener live on the same side. */
 &trackball_split {
     device = <&trackball>;
-    /* Optional: Apply input processors before sending to central if needed */
-    /* input-processors = <&some_processor>; */
+};
+
+/* Enable the trackball listener on the central (left) */
+&trackball_listener {
+    status = "okay";
+
+    // Default: Automouse - activate MOUSE layer (4) on movement, timeout after 720ms
+    input-processors = <&zip_temp_layer 4 720>;
+
+    // Scroll mode - convert XY movement to scroll wheel on layer 5
+    scroller {
+        layers = <5>;
+        input-processors = <&zip_xy_to_scroll_mapper>;
+    };
+
+    // Snipe mode - reduce speed to 1/4 for precision on layer 6
+    sniper {
+        layers = <6>;
+        input-processors = <&zip_xy_scaler 1 4>;
+    };
 };
